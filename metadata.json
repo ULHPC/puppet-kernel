@@ -1,6 +1,6 @@
 {
   "name": "ULHPC/kernel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "S. Varrette, H. Cartiaux, V. Plugaru, S. Diehl aka. UL HPC Management Team",
   "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure various aspects of Linux kernel (modules etc.)",
@@ -26,5 +26,10 @@
       ]
     }
   ],
-  "tags": ["os", "linux", "kernel", "modprobe"]
+  "tags": [
+    "os",
+    "linux",
+    "kernel",
+    "modprobe"
+  ]
 }
