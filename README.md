@@ -21,8 +21,14 @@ Configure various aspects of Linux kernel (modules etc.).
 This module implements the following elements: 
 
 * __Puppet classes__:
+    - `kernel` 
+    - `kernel::common` 
+    - `kernel::common::debian` 
+    - `kernel::common::redhat` 
+    - `kernel::params` 
 
 * __Puppet definitions__: 
+    - `kernel::module` 
 
 All these components are configured through a set of variables you will find in
 [`manifests/params.pp`](manifests/params.pp). 
@@ -51,6 +57,23 @@ Use it as follows:
 
 See also [`tests/init.pp`](tests/init.pp)
 
+
+### Definition `kernel::module`
+
+The definition `kernel::module` provides ...
+This definition accepts the following parameters:
+
+* `$ensure`: default to 'present', can be 'absent'
+* `$content`: specify the contents of the directive as a string
+* `$source`: copy a file as the content of the directive.
+
+Example:
+
+        kernel::module { 'toto':
+		      ensure => 'present',
+        }
+
+See also [`tests/module.pp`](tests/module.pp)
 
 
 ## Librarian-Puppet / R10K Setup
