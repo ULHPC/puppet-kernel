@@ -57,9 +57,9 @@ define kernel::module ($ensure = 'present') {
     }
 
     # Let's go
-    info("managing kernel module '$modulename' (with ensure = ${ensure})")
+    info("managing kernel module '${modulename}' (with ensure = ${ensure})")
 
-    if ($ensure == 'present'){        
+    if ($ensure == 'present'){
         # Add the module in the modulefile (/etc/modules typically)
         exec { "insert_module_${modulename}":
             path    => '/sbin:/usr/bin:/usr/sbin:/bin',
