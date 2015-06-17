@@ -15,12 +15,13 @@
 
 include 'kernel::params'
 
-$names = ["ensure", "protocol", "port", "packagename"]
+$names = ['modulefile', 'modulefile_mode', 'modulefile_owner', 'modulefile_group', 'modprobe']
 
-notice("kernel::params::ensure = ${kernel::params::ensure}")
-notice("kernel::params::protocol = ${kernel::params::protocol}")
-notice("kernel::params::port = ${kernel::params::port}")
-notice("kernel::params::packagename = ${kernel::params::packagename}")
+notice("kernel::params::modulefile = ${kernel::params::modulefile}")
+notice("kernel::params::modulefile_mode = ${kernel::params::modulefile_mode}")
+notice("kernel::params::modulefile_owner = ${kernel::params::modulefile_owner}")
+notice("kernel::params::modulefile_group = ${kernel::params::modulefile_group}")
+notice("kernel::params::modprobe = ${kernel::params::modprobe}")
 
 #each($names) |$v| {
 #    $var = "kernel::params::${v}"
