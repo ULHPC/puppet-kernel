@@ -1,0 +1,35 @@
+{
+  "name": "ULHPC/kernel",
+  "version": "0.0.2",
+  "author": "S. Varrette, H. Cartiaux, V. Plugaru, S. Diehl aka. UL HPC Management Team",
+  "mail": "hpc-sysadmins@uni.lu",
+  "summary": "Configure various aspects of Linux kernel (modules etc.)",
+  "description": "Configure various aspects of Linux kernel (modules etc.)",
+  "license": "GPL-3.0",
+  "source": "https://github.com/ULHPC/puppet-kernel",
+  "docs_project": "ulhpc-puppet-kernel",
+  "project_page": "https://github.com/ULHPC/puppet-kernel",
+  "issues_url": "https://github.com/ULHPC/puppet-kernel/issues",
+  "forge_url": "https://forge.puppetlabs.com/ULHPC/kernel",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">=4.2.2 <5.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "tags": [
+    "os",
+    "linux",
+    "kernel",
+    "modprobe"
+  ]
+}
