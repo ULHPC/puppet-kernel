@@ -1,6 +1,6 @@
 {
   "name": "ULHPC/kernel",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "S. Varrette, H. Cartiaux, V. Plugaru, S. Diehl aka. UL HPC Management Team",
   "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure various aspects of Linux kernel (modules etc.)",
@@ -31,5 +31,15 @@
     "linux",
     "kernel",
     "modprobe"
+  ],
+  "classes": [
+    "kernel",
+    "kernel::common",
+    "kernel::common::debian",
+    "kernel::common::redhat",
+    "kernel::params"
+  ],
+  "definitions": [
+    "kernel::module"
   ]
 }
