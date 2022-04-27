@@ -35,7 +35,7 @@ class kernel inherits kernel::params
 
     case $::operatingsystem {
         debian, ubuntu:         { include kernel::common::debian }
-        redhat, fedora, centos: { include kernel::common::redhat }
+        redhat, fedora, centos, rocky: { include kernel::common::redhat }
         default: {
             fail("Module ${module_name} is not supported on ${::operatingsystem}")
         }
