@@ -43,17 +43,17 @@ define kernel::module ($ensure = 'present') {
 
     $insert_module_cmd = $::operatingsystem ? {
         /(?i-mx:ubuntu|debian)/        => "echo '${modulename}' >> '${kernel::params::modulefile}'",
-        /(?i-mx:centos|fedora|redhat)/ => "echo '${kernel::params::modprobe} ${modulename}' >> '${kernel::params::modulefile}' ",
+        /(?i-mx:centos|fedora|redhat|rocky)/ => "echo '${kernel::params::modprobe} ${modulename}' >> '${kernel::params::modulefile}' ",
     }
 
     $remove_module_cmd = $::operatingsystem ? {
         /(?i-mx:ubuntu|debian)/        => "perl -ni -e 'print unless /^\\Q${modulename}\\E\$/' '${kernel::params::modulefile}'",
-        /(?i-mx:centos|fedora|redhat)/ => "perl -ni -e 'print unless /^\\Q${kernel::params::modprobe} ${modulename}\\E\$/' '${kernel::params::modulefile}'",
+        /(?i-mx:centos|fedora|redhat|rocky)/ => "perl -ni -e 'print unless /^\\Q${kernel::params::modprobe} ${modulename}\\E\$/' '${kernel::params::modulefile}'",
     }
 
     $insert_unless_cmd = $::operatingsystem ? {
         /(?i-mx:ubuntu|debian)/        => "grep -qFx '${modulename}' '${kernel::params::modulefile}'",
-        /(?i-mx:centos|fedora|redhat)/ => "grep -q '^${kernel::params::modprobe} ${modulename}\$' '${kernel::params::modulefile}'",
+        /(?i-mx:centos|fedora|redhat|rocky)/ => "grep -q '^${kernel::params::modprobe} ${modulename}\$' '${kernel::params::modulefile}'",
     }
 
     # Let's go
