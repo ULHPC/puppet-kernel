@@ -1,6 +1,6 @@
 {
   "name": "ULHPC/kernel",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "UL HPC Team",
   "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure various aspects of Linux kernel (modules etc.)",
