@@ -33,21 +33,21 @@ class kernel::params {
     #### MODULE INTERNAL VARIABLES  #########
     # (Modify to adapt to unsupported OSes)
     #######################################
-    $modulefile = $::operatingsystem ? {
+    $modulefile = $facts['os']['name'] ? {
         /(?i-mx:ubuntu|debian)/ => '/etc/modules',
         default => '/etc/rc.modules',
     }
 
-    $modulefile_mode = $::operatingsystem ? {
+    $modulefile_mode = $facts['os']['name'] ? {
         /(?i-mx:centos|fedora|redhat|rocky)/ => '0755',
         default => '0644',
     }
 
-    $modulefile_owner = $::operatingsystem ? {
+    $modulefile_owner = $facts['os']['name'] ? {
         default => 'root',
     }
 
-    $modulefile_group = $::operatingsystem ? {
+    $modulefile_group = $facts['os']['name'] ? {
         default => 'root',
     }
 
@@ -57,7 +57,7 @@ class kernel::params {
     #     default => []
     # }
 
-    $modprobe =  $::operatingsystem ? {
+    $modprobe =  $facts['os']['name'] ? {
         default => '/sbin/modprobe'
     }
 

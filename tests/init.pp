@@ -18,6 +18,6 @@
 node default {
     include kernel
     kernel::module { 'bridge':
-        ensure => 'present'
+        ensure => 'present',
     }
 }

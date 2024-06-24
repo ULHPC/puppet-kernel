@@ -41,17 +41,17 @@ define kernel::module ($ensure = 'present') {
     # guid of this entry
     $modulename = $name
 
-    $insert_module_cmd = $::operatingsystem ? {
+    $insert_module_cmd = $facts['os']['name'] ? {
         /(?i-mx:ubuntu|debian)/        => "echo '${modulename}' >> '${kernel::params::modulefile}'",
         /(?i-mx:centos|fedora|redhat|rocky)/ => "echo '${kernel::params::modprobe} ${modulename}' >> '${kernel::params::modulefile}' ",
     }
 
-    $remove_module_cmd = $::operatingsystem ? {
+    $remove_module_cmd = $facts['os']['name'] ? {
         /(?i-mx:ubuntu|debian)/        => "perl -ni -e 'print unless /^\\Q${modulename}\\E\$/' '${kernel::params::modulefile}'",
         /(?i-mx:centos|fedora|redhat|rocky)/ => "perl -ni -e 'print unless /^\\Q${kernel::params::modprobe} ${modulename}\\E\$/' '${kernel::params::modulefile}'",
     }
 
-    $insert_unless_cmd = $::operatingsystem ? {
+    $insert_unless_cmd = $facts['os']['name'] ? {
         /(?i-mx:ubuntu|debian)/        => "grep -qFx '${modulename}' '${kernel::params::modulefile}'",
         /(?i-mx:centos|fedora|redhat|rocky)/ => "grep -q '^${kernel::params::modprobe} ${modulename}\$' '${kernel::params::modulefile}'",
     }
@@ -71,7 +71,7 @@ define kernel::module ($ensure = 'present') {
         exec { "modprobe ${modulename}":
             path    => '/sbin:/usr/bin:/usr/sbin:/bin',
             command => "${kernel::params::modprobe} ${modulename}",
-            unless  => "/bin/grep -q '^${modulename} ' '/proc/modules'"
+            unless  => "/bin/grep -q '^${modulename} ' '/proc/modules'",
         }
     }
     else
@@ -80,7 +80,7 @@ define kernel::module ($ensure = 'present') {
         exec { "modprobe -r ${modulename}":
             path    => '/sbin:/usr/bin:/usr/sbin:/bin',
             command => "${kernel::params::modprobe} -r ${modulename}",
-            onlyif  => "/bin/grep -q '^${modulename} ' '/proc/modules'"
+            onlyif  => "/bin/grep -q '^${modulename} ' '/proc/modules'",
         }
 
         # Now remove the module from the modulefile (/etc/modules typically)
