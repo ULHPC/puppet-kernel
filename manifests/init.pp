@@ -33,11 +33,11 @@ class kernel inherits kernel::params
 {
     info ('Configuring GNU/linux kernel')
 
-    case $::operatingsystem {
-        debian, ubuntu:         { include kernel::common::debian }
-        redhat, fedora, centos, rocky: { include kernel::common::redhat }
+    case $facts['os']['name'] {
+        'debian', 'ubuntu':         { include kernel::common::debian }
+        'redhat', 'fedora', 'centos', 'rocky': { include kernel::common::redhat }
         default: {
-            fail("Module ${module_name} is not supported on ${::operatingsystem}")
+            fail("Module ${module_name} is not supported on ${facts['os']['name']}")
         }
     }
 }
