@@ -7,4 +7,4 @@
 # = Class: kernel::common::redhat
 #
 # Specialization class for Redhat systems
-class kernel::common::redhat inherits kernel::common { }
+class kernel::common::redhat inherits kernel::common {}

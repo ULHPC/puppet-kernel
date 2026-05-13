@@ -1,5 +1,3 @@
--*- mode: markdown; mode: visual-line;  -*-
-
 # Kernel Puppet Module
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/ULHPC/kernel.svg)](https://forge.puppetlabs.com/ULHPC/kernel)
@@ -8,7 +6,7 @@
 
 Configure various aspects of Linux kernel (modules etc.)
 
-      Copyright (c) 2015 S. Varrette, H. Cartiaux, V. Plugaru, S. Diehl aka. UL HPC Management Team <hpc-sysadmins@uni.lu>
+      Copyright (c) 2026 UL HPC Team <hpc-sysadmins@uni.lu>
 
 
 | [Project Page](https://github.com/ULHPC/puppet-kernel) | [Sources](https://github.com/ULHPC/puppet-kernel) | [Issues](https://github.com/ULHPC/puppet-kernel/issues) |
@@ -32,9 +30,6 @@ This module implements the following elements:
 All these components are configured through a set of variables you will find in
 [`manifests/params.pp`](manifests/params.pp).
 
-_Note_: the various operations that can be conducted from this repository are piloted from a [`Rakefile`](https://github.com/ruby/rake) and assumes you have a running [Ruby](https://www.ruby-lang.org/en/) installation.
-See `docs/contributing.md` for more details on the steps you shall follow to have this `Rakefile` working properly.
-
 ## Dependencies
 
 See [`metadata.json`](metadata.json). In particular, this module depends on
@@ -54,9 +49,6 @@ Use it as follows:
 
      include ' kernel'
 
-See also [`tests/init.pp`](tests/init.pp)
-
-
 ### Definition `kernel::module`
 
 The definition `kernel::module` provides ...
@@ -72,9 +64,6 @@ Example:
 		      ensure => 'present',
         }
 
-See also [`tests/module.pp`](tests/module.pp)
-
-
 ## Librarian-Puppet / R10K Setup
 
 You can of course configure the kernel module in your `Puppetfile` to make it available with [Librarian puppet](http://librarian-puppet.com/) or
@@ -87,25 +76,18 @@ or, if you prefer to work on the git version:
 
      mod "ULHPC/kernel",
          :git => 'https://github.com/ULHPC/puppet-kernel',
-         :ref => 'production'
+         :ref => 'main'
 
-## Issues / Feature request
+## Developments / Issues / Contributing to the code
 
-You can submit bug / issues / feature request using the [ULHPC/kernel Puppet Module Tracker](https://github.com/ULHPC/puppet-kernel/issues).
-
-## Developments / Contributing to the code
+This Puppet Module has been implemented in the context of the [UL HPC](http://hpc.uni.lu) Platform of the [University of Luxembourg](http://www.uni.lu).
+It relies on [Vox Pupuli modulesync](https://github.com/voxpupuli/modulesync) for its organization.
 
 If you want to contribute to the code, you shall be aware of the way this module is organized.
 These elements are detailed on [`docs/contributing.md`](contributing/index.md).
 
+You can submit bugs / issues / feature requests using the [ULHPC/kernel Puppet Module Tracker](https://github.com/ULHPC/puppet-kernel/issues).
 You are more than welcome to contribute to its development by [sending a pull request](https://help.github.com/articles/using-pull-requests).
-
-## Puppet modules tests within a Vagrant box
-
-The best way to test this module in a non-intrusive way is to rely on [Vagrant](http://www.vagrantup.com/).
-The `Vagrantfile` at the root of the repository pilot the provisioning various vagrant boxes available on [Vagrant cloud](https://atlas.hashicorp.com/boxes/search?utf8=%E2%9C%93&sort=&provider=virtualbox&q=svarrette) you can use to test this module.
-
-See [`docs/vagrant.md`](vagrant.md) for more details.
 
 ## Licence
 

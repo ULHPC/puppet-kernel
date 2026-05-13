@@ -23,44 +23,38 @@
 # [Remember: No empty lines between comments and class definition]
 #
 class kernel::params {
+  ######## DEFAULTS FOR VARIABLES USERS CAN SET ##########################
+  # (Here are set the defaults, provide your custom variables externally)
+  # (The default used is in the line with '')
+  ###########################################
 
-    ######## DEFAULTS FOR VARIABLES USERS CAN SET ##########################
-    # (Here are set the defaults, provide your custom variables externally)
-    # (The default used is in the line with '')
-    ###########################################
+  #### MODULE INTERNAL VARIABLES  #########
+  # (Modify to adapt to unsupported OSes)
+  #######################################
+  $modulefile = $facts['os']['name'] ? {
+    /(?i-mx:ubuntu|debian)/ => '/etc/modules',
+    default => '/etc/rc.modules',
+  }
 
+  $modulefile_mode = $facts['os']['name'] ? {
+    /(?i-mx:centos|fedora|redhat|rocky)/ => '0755',
+    default => '0644',
+  }
 
-    #### MODULE INTERNAL VARIABLES  #########
-    # (Modify to adapt to unsupported OSes)
-    #######################################
-    $modulefile = $facts['os']['name'] ? {
-        /(?i-mx:ubuntu|debian)/ => '/etc/modules',
-        default => '/etc/rc.modules',
-    }
+  $modulefile_owner = $facts['os']['name'] ? {
+    default => 'root',
+  }
 
-    $modulefile_mode = $facts['os']['name'] ? {
-        /(?i-mx:centos|fedora|redhat|rocky)/ => '0755',
-        default => '0644',
-    }
+  $modulefile_group = $facts['os']['name'] ? {
+    default => 'root',
+  }
 
-    $modulefile_owner = $facts['os']['name'] ? {
-        default => 'root',
-    }
+  # $pkgmanager = $::operatingsystem ? {
+  #     /(?i-mx:ubuntu|debian)/          => [ '/usr/bin/apt-get' ],
+  #     /(?i-mx:centos|fedora|redhat|rocky)/ => [ '/bin/rpm', '/usr/bin/up2date', '/usr/bin/yum' ],
+  #     default => []
+  # }
 
-    $modulefile_group = $facts['os']['name'] ? {
-        default => 'root',
-    }
-
-    # $pkgmanager = $::operatingsystem ? {
-    #     /(?i-mx:ubuntu|debian)/          => [ '/usr/bin/apt-get' ],
-    #     /(?i-mx:centos|fedora|redhat|rocky)/ => [ '/bin/rpm', '/usr/bin/up2date', '/usr/bin/yum' ],
-    #     default => []
-    # }
-
-    $modprobe =  $facts['os']['name'] ? {
-        default => '/sbin/modprobe'
-    }
-
-
-}
-
+  $modprobe =  $facts['os']['name'] ? {
+    default => '/sbin/modprobe'
+} }
