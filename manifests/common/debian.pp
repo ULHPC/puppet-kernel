@@ -7,4 +7,4 @@
 # = Class: kernel::common::debian
 #
 # Specialization class for Debian systems
-class kernel::common::debian inherits kernel::common { }
+class kernel::common::debian inherits kernel::common {}

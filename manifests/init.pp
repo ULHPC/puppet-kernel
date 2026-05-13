@@ -29,15 +29,14 @@
 #
 # [Remember: No empty lines between comments and class definition]
 #
-class kernel inherits kernel::params
-{
-    info ('Configuring GNU/linux kernel')
+class kernel inherits kernel::params {
+  info ('Configuring GNU/linux kernel')
 
-    case $facts['os']['name'] {
-        'debian', 'ubuntu':         { include kernel::common::debian }
-        'redhat', 'fedora', 'centos', 'rocky': { include kernel::common::redhat }
-        default: {
-            fail("Module ${module_name} is not supported on ${facts['os']['name']}")
-        }
+  case $facts['os']['name'] {
+    'debian', 'ubuntu':         { include kernel::common::debian }
+    'redhat', 'fedora', 'centos', 'rocky': { include kernel::common::redhat }
+    default: {
+      fail("Module ${module_name} is not supported on ${facts['os']['name']}")
     }
+  }
 }
