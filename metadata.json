@@ -2,28 +2,54 @@
   "name": "ULHPC-kernel",
   "version": "0.0.5",
   "author": "UL HPC Team",
-  "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure various aspects of Linux kernel (modules etc.)",
-  "description": "Configure various aspects of Linux kernel (modules etc.)",
   "license": "GPL-3.0",
   "source": "https://github.com/ULHPC/puppet-kernel",
-  "docs_project": "ulhpc-puppet-kernel",
   "project_page": "https://github.com/ULHPC/puppet-kernel",
   "issues_url": "https://github.com/ULHPC/puppet-kernel/issues",
-  "forge_url": "https://forge.puppetlabs.com/ULHPC/kernel",
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">=4.2.2 <5.0.0"
+      "version_requirement": ">=4.2.2 <10.0.0"
     }
   ],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "6",
+        "11",
+        "12",
+        "13"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "8",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
         "7"
       ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 8.0.0 < 9.0.0"
     }
   ],
   "tags": [
@@ -31,15 +57,5 @@
     "linux",
     "kernel",
     "modprobe"
-  ],
-  "classes": [
-    "kernel",
-    "kernel::common",
-    "kernel::common::debian",
-    "kernel::common::redhat",
-    "kernel::params"
-  ],
-  "definitions": [
-    "kernel::module"
   ]
 }
