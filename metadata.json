@@ -1,6 +1,6 @@
 {
   "name": "ULHPC-kernel",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "author": "UL HPC Team",
   "summary": "Configure various aspects of Linux kernel (modules etc.)",
   "license": "GPL-3.0",
